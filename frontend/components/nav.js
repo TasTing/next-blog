@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Nav = ({ categories }) => {
+const Nav = ({ categories, webTitle }) => {
   return (
     <div>
       <nav className="uk-navbar-container" data-uk-navbar>
@@ -9,7 +9,7 @@ const Nav = ({ categories }) => {
           <ul className="uk-navbar-nav">
             <li>
               <Link href="/">
-                <a>Strapi Blog</a>
+                <a>{webTitle}</a>
               </Link>
             </li>
           </ul>
