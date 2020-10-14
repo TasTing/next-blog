@@ -1,16 +1,19 @@
 import React from "react";
 import Articles from "../components/articles";
+import Intro from "../components/intro";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import Hero from "../components/hero";
 import { fetchAPI } from "../lib/api";
 
 const Home = ({ articles, categories, homepage }) => {
   return (
-    <Layout categories={categories}>
+    <Layout categories={categories} title={homepage.hero.title}>
       <Seo seo={homepage.seo} />
       <div className="uk-section">
         <div className="uk-container uk-container-large">
-          <h1>{homepage.hero.title}</h1>
+          <Hero hero={homepage.hero} />
+          <Intro intro={homepage.intro} />
           <Articles articles={articles} />
         </div>
       </div>

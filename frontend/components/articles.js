@@ -22,7 +22,7 @@ const Articles = ({ articles }) => {
               return (
                 <Card
                   article={article}
-                  key={`article__left__${article.slug}`}
+                  key={`article__right__${article.slug}`}
                 />
               );
             })}
