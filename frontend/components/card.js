@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "./image";
+import Box from "@material-ui/core/Box";
+import BlogFooter from "./blogfooter";
 
 const Card = ({ article }) => {
   return (
@@ -8,7 +10,7 @@ const Card = ({ article }) => {
       <a className="uk-link-reset">
         <div className="uk-card uk-card-muted">
           <div className="uk-card-media-top">
-            <Image image={article.image} />
+            <Image image={article.image}/>
           </div>
           <div className="uk-card-body">
             <p id="category" className="uk-text-uppercase">
@@ -17,6 +19,7 @@ const Card = ({ article }) => {
             <p id="title" className="uk-text-large">
               {article.title}
             </p>
+            <BlogFooter author={article.author.name} publish={article.publishedAt} image={article.author.picture}/>
           </div>
         </div>
       </a>

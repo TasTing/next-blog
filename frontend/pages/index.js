@@ -5,17 +5,18 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Hero from "../components/hero";
 import { fetchAPI } from "../lib/api";
+import { Container } from "@material-ui/core";
 
 const Home = ({ articles, categories, homepage }) => {
   return (
-    <Layout categories={categories} webTitle={homepage.hero.title}>
+    <Layout categories={categories} title={homepage.hero.title}>
       <Seo seo={homepage.seo} />
       <div className="uk-section">
-        <div className="uk-container uk-container-large">
+        <Container>
           <Hero hero={homepage.hero} />
           <Intro intro={homepage.intro} />
-          <Articles articles={articles} />
-        </div>
+          <Articles articles={articles}/>
+        </Container>
       </div>
     </Layout>
   );

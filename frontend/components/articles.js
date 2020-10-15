@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./card";
+import { Toolbar } from "@material-ui/core";
 
 const Articles = ({ articles }) => {
   const leftArticlesCount = Math.ceil(articles.length / 5);
@@ -12,7 +13,10 @@ const Articles = ({ articles }) => {
         <div>
           {leftArticles.map((article, i) => {
             return (
-              <Card article={article} key={`article__left__${article.slug}`} />
+              <div key={`article__left__${article.slug}`}>
+              <Card article={article} />
+              <Toolbar />
+              </div>
             );
           })}
         </div>

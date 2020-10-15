@@ -5,20 +5,20 @@ import Layout from "../../components/layout";
 import Image from "../../components/image";
 import Seo from "../../components/seo";
 import { getStrapiMedia } from "../../lib/media";
+import BlogFooter from "../../components/blogfooter";
 
-const Article = ({ article, categories }) => {
+const Article = ({ article, categories, homepage }) => {
   const imageUrl = getStrapiMedia(article.image);
-
   const seo = {
     metaTitle: article.title,
     metaDescription: article.description,
     shareImage: article.image,
-    article: true,
+    article: true
   };
 
   return (
-    <Layout categories={categories}>
-      <Seo seo={seo} />
+    <Layout categories={categories} title={homepage.hero.title}>
+      <Seo seo={seo}/>
       <div
         id="banner"
         className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
@@ -26,34 +26,13 @@ const Article = ({ article, categories }) => {
         data-srcset={imageUrl}
         data-uk-img
       >
-        <h1>{article.title}</h1>
+        <h1 style={{fontSize:100}}>{article.title}</h1>
       </div>
       <div className="uk-section">
         <div className="uk-container uk-container-small">
-          <ReactMarkdown source={article.content} escapeHtml={false} />
-          <hr className="uk-divider-small" />
-          <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
-            <div>
-              {article.author.picture && (
-                <Image
-                  image={article.author.picture}
-                  style={{
-                    position: "static",
-                    borderRadius: "50%",
-                    height: 30,
-                  }}
-                />
-              )}
-            </div>
-            <div className="uk-width-expand">
-              <p className="uk-margin-remove-bottom">
-                By {article.author.name}
-              </p>
-              <p className="uk-text-meta uk-margin-remove-top">
-                <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-              </p>
-            </div>
-          </div>
+          <ReactMarkdown source={article.content} escapeHtml={false}/>
+          <hr className="uk-divider-small"/>
+          <BlogFooter author={article.author.name} publish={article.publishedAt} image={article.author.picture}/>
         </div>
       </div>
     </Layout>
@@ -62,26 +41,28 @@ const Article = ({ article, categories }) => {
 
 export async function getStaticPaths() {
   const articles = await fetchAPI("/articles");
-
   return {
     paths: articles.map((article) => ({
       params: {
-        slug: article.slug,
-      },
+        slug: article.slug
+      }
     })),
-    fallback: false,
+    fallback: false
   };
 }
 
 export async function getStaticProps({ params }) {
-  const articles = await fetchAPI(
-    `/articles?slug=${params.slug}&status=published`
-  );
-  const categories = await fetchAPI("/categories");
+  const [articles, homepage, categories] = await Promise.all([
+    fetchAPI(
+      `/articles?slug=${params.slug}&status=published`
+    ),
+    fetchAPI("/homepage"),
+    fetchAPI("/categories"),
+  ]);
 
   return {
-    props: { article: articles[0], categories },
-    revalidate: 1,
+    props: { article: articles[0], homepage, categories },
+    revalidate: 1
   };
 }
 

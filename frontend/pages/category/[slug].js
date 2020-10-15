@@ -3,14 +3,14 @@ import { fetchAPI } from "../../lib/api";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 
-const Category = ({ category, categories }) => {
+const Category = ({ category, categories, homepage }) => {
   const seo = {
     metaTitle: category.name,
     metaDescription: `All ${category.name} articles`,
   };
 
   return (
-    <Layout categories={categories}>
+    <Layout categories={categories} title={homepage.hero.title}>
       <Seo seo={seo} />
       <div className="uk-section">
         <div className="uk-container uk-container-large">
@@ -38,9 +38,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const category = (await fetchAPI(`/categories?slug=${params.slug}`))[0];
   const categories = await fetchAPI("/categories");
+  const homepage = await fetchAPI("/homepage");
 
   return {
-    props: { category, categories },
+    props: { category, categories, homepage },
     revalidate: 1,
   };
 }
