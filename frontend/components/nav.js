@@ -14,7 +14,7 @@ const Nav = ({ categories, title }) => {
           {categories.map((category) => {
             return (
               <li key={category.id} className="nav-item active">
-                <Link as={`/category/${category.slug}`} href="/category/[id]">
+                <Link as={`/category/${category.slug}`} href={`/category/${category.id}`}>
                   <a className="nav-link">{category.name.toUpperCase()}</a>
                 </Link>
               </li>

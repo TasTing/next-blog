@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "./image";
-import Box from "@material-ui/core/Box";
 import BlogFooter from "./blogfooter";
 
 const Card = ({ article }) => {

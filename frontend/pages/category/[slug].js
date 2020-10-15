@@ -8,7 +8,6 @@ const Category = ({ category, categories, homepage }) => {
     metaTitle: category.name,
     metaDescription: `All ${category.name} articles`,
   };
-
   return (
     <Layout categories={categories} title={homepage.hero.title}>
       <Seo seo={seo} />
@@ -24,7 +23,6 @@ const Category = ({ category, categories, homepage }) => {
 
 export async function getStaticPaths() {
   const categories = await fetchAPI("/categories");
-
   return {
     paths: categories.map((category) => ({
       params: {
@@ -39,7 +37,6 @@ export async function getStaticProps({ params }) {
   const category = (await fetchAPI(`/categories?slug=${params.slug}`))[0];
   const categories = await fetchAPI("/categories");
   const homepage = await fetchAPI("/homepage");
-
   return {
     props: { category, categories, homepage },
     revalidate: 1,

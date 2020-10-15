@@ -22,11 +22,15 @@ const Article = ({ article, categories, homepage }) => {
       <div
         id="banner"
         className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
+        style={{
+          backgroundColor: "grey",
+          backgroundBlendMode: "screen"
+        }}
         data-src={imageUrl}
         data-srcset={imageUrl}
         data-uk-img
       >
-        <h1 style={{fontSize:100}}>{article.title}</h1>
+        <h1 style={{fontSize:100,color:"black"}}>{article.title}</h1>
       </div>
       <div className="uk-section">
         <div className="uk-container uk-container-small">
