@@ -40,7 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
                 crossOrigin="anonymous"></script>
       </Head>
       <GlobalContext.Provider value={global}>
-        <Component {...pageProps} />
+        <Component {...pageProps} global={global} />
       </GlobalContext.Provider>
     </>
   );

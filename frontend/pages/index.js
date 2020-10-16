@@ -7,9 +7,9 @@ import Hero from "../components/hero";
 import { fetchAPI } from "../lib/api";
 import { Container } from "@material-ui/core";
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = ({ articles, categories, homepage, global }) => {
   return (
-    <Layout categories={categories} title={homepage.hero.title}>
+    <Layout categories={categories} title={global.siteName}>
       <Seo seo={homepage.seo} />
       <div className="uk-section">
         <Container>
