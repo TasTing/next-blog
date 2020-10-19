@@ -9,7 +9,7 @@ const Category = ({ category, categories, homepage }) => {
     metaDescription: `All ${category.name} articles`,
   };
   return (
-    <Layout categories={categories} title={homepage.hero.title}>
+    <Layout categories={categories} title={global.siteName}>
       <Seo seo={seo} />
       <div className="uk-section">
         <div className="uk-container uk-container-large">

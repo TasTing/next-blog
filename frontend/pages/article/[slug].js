@@ -17,7 +17,7 @@ const Article = ({ article, categories, homepage }) => {
   };
 
   return (
-    <Layout categories={categories} title={homepage.hero.title}>
+    <Layout categories={categories} title={global.siteName}>
       <Seo seo={seo}/>
       <div
         id="banner"
