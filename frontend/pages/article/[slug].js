@@ -7,7 +7,7 @@ import Seo from "../../components/seo";
 import { getStrapiMedia } from "../../lib/media";
 import BlogFooter from "../../components/blogfooter";
 
-const Article = ({ article, categories, homepage }) => {
+const Article = ({ article, categories, homepage, global }) => {
   const imageUrl = getStrapiMedia(article.image);
   const seo = {
     metaTitle: article.title,

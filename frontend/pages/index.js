@@ -14,7 +14,7 @@ const Home = ({ articles, categories, homepage, global }) => {
       <div className="uk-section">
         <Container>
           <Hero hero={homepage.hero} />
-          <Intro intro={homepage.intro} />
+          <Intro intro={homepage.intro}/>
           <Articles articles={articles}/>
         </Container>
       </div>

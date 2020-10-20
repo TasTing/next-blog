@@ -44,9 +44,11 @@ const Intro = ({ intro }) => {
               platform => (
                 platform.title === "facebook" ?
                   <Button className={classes.button} variant={"outlined"}
+                          key={platform.id}
                           href={platform.link}><Facebook/></Button>
                   : platform.title === "linkedin" ?
                   <Button className={classes.button} variant={"outlined"}
+                          key={platform.id}
                           href={platform.link}><Linkedin/></Button>
                   : null
               )

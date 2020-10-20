@@ -3,7 +3,7 @@ import { fetchAPI } from "../../lib/api";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 
-const Category = ({ category, categories, homepage }) => {
+const Category = ({ category, categories, homepage, global }) => {
   const seo = {
     metaTitle: category.name,
     metaDescription: `All ${category.name} articles`,
