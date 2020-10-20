@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Toolbar } from "@material-ui/core";
+import { Toolbar, Grid } from "@material-ui/core";
 import Link from "next/link";
 
 const Copyright = () => {
@@ -37,25 +37,34 @@ const Footer = ({ global, categories }) => {
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
-          {global.siteName}
-        </Typography>
-        <Typography variant="subtitle1" align="center" component="p">
-          {global.defaultSeo.metaDescription}
-        </Typography>
-        <Typography variant="subtitle1" align="center" component="p">
-          <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
-        </Typography>
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <Container>
+              {
+                categories.map((category => (
+                  <Link as={`/category/${category.slug}`} href={`/category/${category.id}`} key={category.id}>
+                    <a className="nav-link">{category.name.toUpperCase()}</a>
+                  </Link>
+                )))
+              }
+            </Container>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h6" align="center" gutterBottom>
+              {global.siteName}
+            </Typography>
+            <Typography variant="subtitle1" align="center" component="p">
+              {global.defaultSeo.metaDescription}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Typography variant={"h6"} align={"center"}>More Resources:</Typography>
+            <Typography variant="subtitle1" align="center" component="p">
+              <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
+            </Typography>
+          </Grid>
+        </Grid>
         <Copyright/>
-        <Toolbar component={"nav"} variant={"dense"} className={classes.nav}>
-          {
-            categories.map((category => (
-              <Link as={`/category/${category.slug}`} href={`/category/${category.id}`} key={category.id}>
-                <a className="nav-link">{category.name.toUpperCase()}</a>
-              </Link>
-            )))
-          }
-        </Toolbar>
       </Container>
     </footer>
   );
