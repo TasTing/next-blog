@@ -7,10 +7,10 @@ import Link from "next/link";
 
 const Copyright = () => {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        TLOG
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -20,9 +20,14 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor:'#212529',
     // marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0)
+    padding: theme.spacing(6, 0),
+    color:"wheat",
+  },
+  nav:{
+    justifyContent:"space-between",
+    
   }
 }));
 
@@ -35,14 +40,14 @@ const Footer = ({ global, categories }) => {
         <Typography variant="h6" align="center" gutterBottom>
           {global.siteName}
         </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography variant="subtitle1" align="center" component="p">
           {global.defaultSeo.metaDescription}
         </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography variant="subtitle1" align="center" component="p">
           <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
         </Typography>
         <Copyright/>
-        <Toolbar component={"nav"} variant={"dense"} style={{justifyContent:'space-between'}}>
+        <Toolbar component={"nav"} variant={"dense"} className={classes.nav}>
           {
             categories.map((category => (
               <Link as={`/category/${category.slug}`} href={`/category/${category.id}`} key={category.id}>
