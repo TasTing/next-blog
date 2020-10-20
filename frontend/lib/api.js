@@ -1,6 +1,6 @@
 export function getStrapiURL(path = "") {
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "https://my-next-backend.herokuapp.com" 
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || "https://127.0.0.1" 
   }${path}`;
   // for local use
   // change it to 127.0.0.1 once everything is done for template use
