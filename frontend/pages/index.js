@@ -9,7 +9,7 @@ import { Container } from "@material-ui/core";
 
 const Home = ({ articles, categories, homepage, global }) => {
   return (
-    <Layout categories={categories} title={global.siteName}>
+    <Layout categories={categories} global={global}>
       <Seo seo={homepage.seo} />
       <div className="uk-section">
         <Container>

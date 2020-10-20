@@ -11,6 +11,11 @@ const Nav = ({ categories, title }) => {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a className="navbar-brand" href="/">{title}</a>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li key={"about"} className="nav-item active">
+            <Link as={`/about`} href={`/about`}>
+              <a className="nav-link">{"about".toUpperCase()}</a>
+            </Link>
+          </li>
           {categories.map((category) => {
             return (
               <li key={category.id} className="nav-item active">

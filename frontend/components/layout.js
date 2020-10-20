@@ -1,11 +1,11 @@
 import Nav from "./nav";
 import Footer from "./footer";
 
-const Layout = ({ children, categories, seo, title }) => (
+const Layout = ({ children, categories, seo, global }) => (
   <>
-    <Nav categories={categories} title={title} />
+    <Nav categories={categories} title={global.siteName} />
     {children}
-    <Footer/>
+    <Footer global={global} categories={categories}/>
   </>
 );
 

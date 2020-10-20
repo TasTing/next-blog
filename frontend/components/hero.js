@@ -7,10 +7,12 @@ const insideStyles = {
   background: "transparent",
   padding: 20,
   position: "absolute",
+  fontSize:'11vh',
   top: "50%",
   left: "50%",
   color: "white",
   transform: "translate(-50%,-50%)",
+
 };
 const outsideStyles = {
   marginBottom: 20,
