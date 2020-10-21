@@ -25,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6, 0),
     color:"wheat",
   },
-  nav:{
-    justifyContent:"space-between",
-    
-  }
 }));
 
 const Footer = ({ global, categories }) => {
