@@ -3,21 +3,27 @@ import Link from "next/link";
 import Image from "./image";
 import BlogFooter from "./blogfooter";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Box } from "@material-ui/core";
+import { Container, Box, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     color:"black",
-    textDecoration:'none',
-  },
-  category:{
-
+    textDecoration:"none",
   },
   down:{
+    color:'black',
     padding:20,
     marginTop:10,
     marginBottom:10,
+    '&:hover': {
+      color:'blue',
+    },
   },
+  interact:{
+    '&:hover': {
+      textDecoration:"none",
+    },
+  }
 }));
 
 const Card = ({ article }) => {
@@ -25,18 +31,18 @@ const Card = ({ article }) => {
   return (
     <Box className={classes.root}>
       <Link as={`/article/${article.slug}`} href="/article/[id]">
-        <a>
+        <a className={classes.interact}>
           <div>
             <div>
               <Image image={article.image}/>
             </div>
             <div className={classes.down}>
-              <h6 id="category" className={classes.category}>
+              <Typography variant={"h6"} id="category" gutterBottom>
                 {article.category.name}
-              </h6>
-              <h4 id="title">
+              </Typography>
+              <Typography variant={"h4"} id="title" gutterBottom>
                 {article.title}
-              </h4>
+              </Typography>
               <BlogFooter author={article.author.name} publish={article.publishedAt} image={article.author.picture}/>
             </div>
           </div>

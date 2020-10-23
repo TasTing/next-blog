@@ -1,7 +1,7 @@
 import React from "react";
 import Moment from "react-moment";
 import Image from "./image";
-import { Grid, Avatar, Container } from "@material-ui/core";
+import { Grid, Avatar, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getStrapiMedia } from "../lib/media";
 
@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(7),
     height: theme.spacing(7),
   },
+  root:{
+    marginTop:10,
+  }
 }));
 
 const BlogFooter = ({ author, publish, image }) => {
@@ -24,7 +27,7 @@ const BlogFooter = ({ author, publish, image }) => {
     avatar = getStrapiMedia(image)
   }
   return (
-    <Grid container>
+    <Grid container className={classes.root}>
       {image?
         <Grid item xs={2}>
           {image && (
@@ -36,13 +39,13 @@ const BlogFooter = ({ author, publish, image }) => {
       <Grid item xs={10}>
         <Container>
           {author?
-            <p>
+            <Typography variant={'body2'}>
               By {author}
-            </p>:null
+            </Typography>:null
           }
-          <p>
+          <Typography variant={'body2'}>
             <Moment format="MMM Do YYYY">{publish}</Moment>
-          </p>
+          </Typography>
         </Container>
       </Grid>
     </Grid>

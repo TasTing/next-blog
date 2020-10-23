@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
   right:{
     padding:5,
-  }
+  },
 }));
 
 const Articles = ({ articles }) => {
@@ -20,19 +20,19 @@ const Articles = ({ articles }) => {
   return (
     <React.Fragment>
       <Grid container className={classes.list}>
-        <Grid item xs={12} md={6} className={classes.left}>
+        <Grid item xs={12} md={6}>
           {leftArticles.map((article, i) => {
             return (
-              <Box key={`article__left__${article.slug}`}>
+              <Box key={`article__left__${article.slug}`} className={classes.left}>
                 <Card article={article}/>
               </Box>
             );
           })}
         </Grid>
-        <Grid item xs={12} md={6} className={classes.right}>
+        <Grid item xs={12} md={6}>
           {rightArticles.map((article, i) => {
             return (
-              <Box key={`article__right__${article.slug}`}>
+              <Box key={`article__right__${article.slug}`} className={classes.right}>
                 <Card article={article}/>
               </Box>
             );
