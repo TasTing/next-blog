@@ -23,7 +23,7 @@ const Hero = ({ hero }) => {
   return (
     <React.Fragment>
       <Parallax bgImage={imageUrl} blur={{ min: -1, max: 3 }}>
-        <div style={{ height: 300 }}>
+        <div style={{ height: 550 }}>
           <h1 style={insideStyles}>{hero.title}</h1>
         </div>
       </Parallax>

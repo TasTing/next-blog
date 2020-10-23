@@ -1,38 +1,45 @@
 import React from "react";
 import Card from "./card";
-import { Toolbar } from "@material-ui/core";
+import { Grid, Toolbar, Paper, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  left:{
+    padding:5,
+  },
+  right:{
+    padding:5,
+  }
+}));
 
 const Articles = ({ articles }) => {
-  const leftArticlesCount = Math.ceil(articles.length / 5);
+  const classes = useStyles();
+  const leftArticlesCount = Math.ceil(articles.length / 2);
   const leftArticles = articles.slice(0, leftArticlesCount);
   const rightArticles = articles.slice(leftArticlesCount, articles.length);
   return (
-    <div>
-      <div className="uk-child-width-1-2@s" data-uk-grid="true">
-        <div>
+    <React.Fragment>
+      <Grid container className={classes.list}>
+        <Grid item xs={12} md={6} className={classes.left}>
           {leftArticles.map((article, i) => {
             return (
-              <div key={`article__left__${article.slug}`}>
-              <Card article={article} />
-              <Toolbar />
-              </div>
+              <Box key={`article__left__${article.slug}`}>
+                <Card article={article}/>
+              </Box>
             );
           })}
-        </div>
-        <div>
-          <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
-            {rightArticles.map((article, i) => {
-              return (
-                <Card
-                  article={article}
-                  key={`article__right__${article.slug}`}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
+        </Grid>
+        <Grid item xs={12} md={6} className={classes.right}>
+          {rightArticles.map((article, i) => {
+            return (
+              <Box key={`article__right__${article.slug}`}>
+                <Card article={article}/>
+              </Box>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 };
 

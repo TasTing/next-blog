@@ -5,19 +5,28 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Hero from "../components/hero";
 import { fetchAPI } from "../lib/api";
-import { Container } from "@material-ui/core";
+import { Container, Paper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  main:{
+    paddingTop:50,
+    paddingBottom:50,
+  }
+}));
 
 const Home = ({ articles, categories, homepage, global }) => {
+  const classes = useStyles()
   return (
     <Layout categories={categories} global={global}>
       <Seo seo={homepage.seo} />
-      <div className="uk-section">
+      <Paper className={classes.main}>
         <Container>
           <Hero hero={homepage.hero} />
           <Intro intro={homepage.intro}/>
           <Articles articles={articles}/>
         </Container>
-      </div>
+      </Paper>
     </Layout>
   );
 };

@@ -14,8 +14,7 @@ const avatarStyle = {
   transform: "translate(-50%, -50%)"
 };
 
-const useStyles = makeStyles(
-  theme => ({
+const useStyles = makeStyles((theme) => ({
     icon: {
       marginRight: theme.spacing(1)
     }
