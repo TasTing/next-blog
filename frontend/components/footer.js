@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { Toolbar, Grid } from "@material-ui/core";
 import Link from "next/link";
+import { getStrapiMedia } from "../lib/media";
 
 const Copyright = () => {
   return (
@@ -20,7 +21,6 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor:'#212529',
     // marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
     color:"wheat",
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = ({ global, categories }) => {
   const classes = useStyles();
-
+  const backgroundImage = getStrapiMedia(global.defaultSeo.shareImage)
   return (
-    <footer className={classes.footer}>
+    <footer className={classes.footer} style={{backgroundImage:`url(${backgroundImage})`,backgroundSize: 'cover'}}>
       <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={12} md={3}>
@@ -46,18 +46,22 @@ const Footer = ({ global, categories }) => {
             </Container>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="h6" align="center" gutterBottom>
-              {global.siteName}
-            </Typography>
-            <Typography variant="subtitle1" align="center" component="p">
-              {global.defaultSeo.metaDescription}
-            </Typography>
+            <Container>
+              <Typography variant="h6" align="center" gutterBottom>
+                {global.siteName}
+              </Typography>
+              <Typography variant="subtitle1" align="center" component="p">
+                {global.defaultSeo.metaDescription}
+              </Typography>
+            </Container>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography variant={"h6"} align={"center"}>More Resources:</Typography>
-            <Typography variant="subtitle1" align="center" component="p">
-              <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
-            </Typography>
+            <Container>
+              <Typography variant={"h6"} align={"center"}>More Resources:</Typography>
+              <Typography variant="subtitle1" align="center" component="p">
+                <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
+              </Typography>
+            </Container>
           </Grid>
         </Grid>
         <Copyright/>
