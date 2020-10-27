@@ -30,7 +30,7 @@ const Article = ({ article, categories, homepage, global }) => {
         data-srcset={imageUrl}
         data-uk-img
       >
-        <h1 style={{fontSize:100,color:"black"}}>{article.title}</h1>
+        <h1 style={{fontSize:80,color:"black"}}>{article.title}</h1>
       </div>
       <div className="uk-section">
         <div className="uk-container uk-container-small">
