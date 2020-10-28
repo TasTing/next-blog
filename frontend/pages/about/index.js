@@ -4,6 +4,7 @@ import Seo from "../../components/seo";
 import { fetchAPI } from "../../lib/api";
 import { Container } from "@material-ui/core";
 import Intro from "../../components/intro";
+import GithubProfile from "../../components/github";
 
 const About = ({ categories, global, homepage }) => {
   const seo = {};
@@ -14,6 +15,7 @@ const About = ({ categories, global, homepage }) => {
         <Seo seo={seo}/>
         <Container>
           <Intro intro={homepage.intro}/>
+          <GithubProfile/>
         </Container>
       </div>
     </Layout>

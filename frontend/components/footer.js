@@ -1,10 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Toolbar, Grid } from "@material-ui/core";
+import { Toolbar, Grid, Container, Box  } from "@material-ui/core";
 import Link from "next/link";
 import { getStrapiMedia } from "../lib/media";
+import Stargazer from "./projectSource";
+
 
 const Copyright = () => {
   return (
@@ -56,12 +57,15 @@ const Footer = ({ global, categories }) => {
             </Container>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Container>
-              <Typography variant={"h6"} align={"center"}>More Resources:</Typography>
+            <Typography variant={"h6"} align={"center"}>More Resources:</Typography>
+            <Box display='flex' alignItems={'center'} justifyContent="center">
+              <Stargazer/>
+            </Box>
+            <Box>
               <Typography variant="subtitle1" align="center" component="p">
-                <a href="https://pngtree.com/free-backgrounds">free background photos from pngtree.com</a>
+                <a href="https://pngtree.com/free-backgrounds">FREE BACKGROUNDS</a>
               </Typography>
-            </Container>
+            </Box>
           </Grid>
         </Grid>
         <Copyright/>
