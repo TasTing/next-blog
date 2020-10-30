@@ -14,7 +14,7 @@ const Category = ({ category, categories, homepage, global }) => {
       <div className="uk-section">
         <div className="uk-container uk-container-large">
           <h2>{category.name}</h2>
-          <Articles articles={category.articles} />
+          <Articles articles={category.articles.toUpperCase()} />
         </div>
       </div>
     </Layout>
