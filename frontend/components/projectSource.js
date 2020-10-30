@@ -3,13 +3,14 @@ import axios from "axios";
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Box, ButtonGroup, Typography, Button, CircularProgress } from "@material-ui/core";
 
-const Stargazer = () => {
-  const BASE_URL = "https://api.github.com/repos/TasTing/next-blog";
+const Stargazer = (repo) => {
+  const BASE_URL = "https://api.github.com/repos/";
+  repo = "TasTing/next-blog"
   const [star,setStar] = useState(null)
 
   useEffect(() => {
     if (!star) {
-      axios.get(BASE_URL)
+      axios.get(BASE_URL+repo)
         .then(res => {
           const star = res.data;
           setStar(star);
