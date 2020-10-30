@@ -6,7 +6,9 @@ import { Box, ButtonGroup, Typography, Button, CircularProgress } from "@materia
 const Stargazer = (repo) => {
   const BASE_URL = "https://api.github.com/repos/";
   repo = "TasTing/next-blog"
-  const [star,setStar] = useState(null)
+  const [star={
+    stargazers_count:String,
+  },setStar] = useState(null)
 
   useEffect(() => {
     if (!star) {
