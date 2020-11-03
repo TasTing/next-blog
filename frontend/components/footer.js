@@ -5,6 +5,7 @@ import { Toolbar, Grid, Container, Box  } from "@material-ui/core";
 import Link from "next/link";
 import { getStrapiMedia } from "../lib/media";
 import Stargazer from "./projectSource";
+import OpenWeather from "./openweather";
 
 
 const Copyright = () => {
@@ -65,6 +66,9 @@ const Footer = ({ global, categories }) => {
               <Typography variant="subtitle1" align="center" component="p">
                 <a href="https://pngtree.com/free-backgrounds">FREE BACKGROUNDS</a>
               </Typography>
+            </Box>
+            <Box>
+              <OpenWeather/>
             </Box>
           </Grid>
         </Grid>
