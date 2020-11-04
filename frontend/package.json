@@ -22,7 +22,6 @@
     "react-jss": "^10.4.0",
     "react-markdown": "^4.2.2",
     "react-moment": "^0.9.6",
-    "react-open-weather": "^0.6.2",
     "react-parallax": "^3.0.3"
   },
   "license": "MIT",
@@ -40,6 +39,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "react-open-weather": "^0.6.2"
   }
 }
