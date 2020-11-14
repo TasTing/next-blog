@@ -2,9 +2,10 @@ import React from "react";
 import {getStrapiMedia} from "../lib/media";
 import Avatar from "@material-ui/core/Avatar";
 import ReactMarkdown from "react-markdown";
-import {Grid, Toolbar, Button, ButtonGroup} from "@material-ui/core";
+import {Grid, Toolbar, Button, ButtonGroup, Typography} from "@material-ui/core";
 import {Facebook, Linkedin} from "@trejgun/material-ui-icons-social-networks";
 import MediaCard from "./mediacard";
+import {VerticalSplit} from "@material-ui/icons";
 
 const avatarStyle = {
     width: 200,
@@ -59,6 +60,7 @@ const Intro = ({intro}) => {
                 </Grid>
                 <Toolbar/>
             </Grid>
+            <Toolbar><Typography variant={"h4"}>What I can do for you?</Typography></Toolbar>
             <Grid container>
                 {intro.features.map(
                     card => (

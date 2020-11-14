@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Hero from "../components/hero";
 import { fetchAPI } from "../lib/api";
-import { Container, Paper } from "@material-ui/core";
+import {Container, Paper, Toolbar, Typography} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +24,7 @@ const Home = ({ articles, categories, homepage, global }) => {
         <Container>
           <Hero hero={homepage.hero} />
           <Intro intro={homepage.intro}/>
+          <Toolbar><Typography variant={"h4"}>My blogs</Typography></Toolbar>
           <Articles articles={articles}/>
         </Container>
       </Paper>
