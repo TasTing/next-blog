@@ -8,7 +8,7 @@ import {getStrapiMedia} from '../lib/media'
 
 const useStyles = makeStyles({
     root: {
-
+        minHeight:300,
     },
     media: {
         height: 140,
@@ -23,7 +23,7 @@ export default function MediaCard({card}) {
         <Card className={classes.root}>
             <CardMedia
                 className={classes.media}
-                image={image}
+                image={image?image:''}
                 title={card.title}
             />
             <CardContent>
