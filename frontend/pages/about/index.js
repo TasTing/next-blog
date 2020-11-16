@@ -5,6 +5,7 @@ import { fetchAPI } from "../../lib/api";
 import { Container } from "@material-ui/core";
 import Intro from "../../components/intro";
 import GithubProfile from "../../components/github";
+import ContactForm from "../../components/contactform";
 
 const About = ({ categories, global, homepage }) => {
   const seo = {};
@@ -16,6 +17,7 @@ const About = ({ categories, global, homepage }) => {
         <Container>
           <Intro intro={homepage.intro}/>
           <GithubProfile/>
+          <ContactForm/>
         </Container>
       </div>
     </Layout>
