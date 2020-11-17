@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
+import {Box, Toolbar, Typography, InputLabel, FormControl, Input, Button, TextField} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    wrapper: {
+        marginTop: 50,
+    },
+});
 
 export default function ContactForm() {
+    const classes = useStyles()
     const [status, setStatus] = useState({
         submitted: false,
         submitting: false,
-        info: { error: false, msg: null },
+        info: {error: false, msg: null},
     })
     const [inputs, setInputs] = useState({
         email: '',
@@ -16,7 +25,7 @@ export default function ContactForm() {
             setStatus({
                 submitted: true,
                 submitting: false,
-                info: { error: false, msg: msg },
+                info: {error: false, msg: msg},
             })
             setInputs({
                 email: '',
@@ -24,7 +33,7 @@ export default function ContactForm() {
             })
         } else {
             setStatus({
-                info: { error: true, msg: msg },
+                info: {error: true, msg: msg},
             })
         }
     }
@@ -37,12 +46,12 @@ export default function ContactForm() {
         setStatus({
             submitted: false,
             submitting: false,
-            info: { error: false, msg: null },
+            info: {error: false, msg: null},
         })
     }
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        setStatus((prevStatus) => ({ ...prevStatus, submitting: true }))
+        setStatus((prevStatus) => ({...prevStatus, submitting: true}))
         axios({
             method: 'POST',
             url: 'https://formspree.io/f/mleollql',
@@ -58,40 +67,66 @@ export default function ContactForm() {
                 handleServerResponse(false, error.response.data.error)
             })
     }
+    const handleOnReset = (e) => {
+
+    }
+
     return (
-        <main>
-            <h1>React and Formspree</h1>
-            <hr />
+        <Box className={classes.wrapper}>
+            <Typography variant={"h4"}>Contact Me</Typography>
             <form onSubmit={handleOnSubmit}>
-                <label htmlFor="email">Email</label>
-                <input
-                    id="email"
-                    type="email"
-                    name="_replyto"
-                    onChange={handleOnChange}
-                    required
-                    value={inputs.email}
-                />
-                <label htmlFor="message">Message</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    onChange={handleOnChange}
-                    required
-                    value={inputs.message}
-                />
-                <button type="submit" disabled={status.submitting}>
-                    {!status.submitting
-                        ? !status.submitted
-                            ? 'Submit'
-                            : 'Submitted'
-                        : 'Submitting...'}
-                </button>
+                <div>
+                    <TextField
+                        id="email"
+                        type="email"
+                        name="_replyto"
+                        label={"Email"}
+                        onChange={handleOnChange}
+                        required
+                        value={inputs.email}
+                        variant={"outlined"}
+                        margin={"dense"}
+                        fullWidth
+                        helperText="Your email address is safe."
+                    >
+                    </TextField>
+                </div>
+                <div>
+                    <TextField
+                        id="message"
+                        name="message"
+                        fullWidth
+                        label={"Message"}
+                        onChange={handleOnChange}
+                        required
+                        value={inputs.message}
+                        multiline
+                        rows={10}
+                        variant={"outlined"}
+                        margin={"dense"}
+                        helperText="Your message is important to me."
+                    />
+                </div>
+                <Toolbar>
+                    <Button type="submit" disabled={status.submitting}>
+                        {!status.submitting
+                            ? !status.submitted
+                                ? 'Submit'
+                                : 'Submitted'
+                            : 'Submitting...'}
+                    </Button>
+                    <Button onClick={handleOnReset}>
+
+                    </Button>
+                </Toolbar>
             </form>
+            <Toolbar>
+
+            </Toolbar>
             {status.info.error && (
-                <div className="error">Error: {status.info.msg}</div>
+                <Typography className="error" variant={'subtitle1'}>Error: {status.info.msg}</Typography>
             )}
-            {!status.info.error && status.info.msg && <p>{status.info.msg}</p>}
-        </main>
+            {!status.info.error && status.info.msg && <Typography variant={'subtitle1'}>{status.info.msg}</Typography>}
+        </Box>
     )
 }
