@@ -57,15 +57,17 @@ const MyApp = ({Component, pageProps}) => {
                         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                         crossOrigin="anonymous"/>
             </Head>
-            <GlobalContext.Provider value={global}>
-                <ThemeProvider theme={theme}>
-                    <Provider session={pageProps.session}>
+            <Provider session={pageProps.session}>
+                <GlobalContext.Provider value={global}>
+                    <ThemeProvider theme={theme}>
+
                         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                         <CssBaseline/>
                         <Component {...pageProps} global={global}/>
-                    </Provider>
-                </ThemeProvider>
-            </GlobalContext.Provider>
+
+                    </ThemeProvider>
+                </GlobalContext.Provider>
+            </Provider>
         </>
     );
 };
