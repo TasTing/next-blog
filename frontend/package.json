@@ -39,6 +39,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
+    "next-auth": "^3.1.0",
     "prettier": "^2.1.2",
     "react-open-weather": "^0.6.2"
   }
