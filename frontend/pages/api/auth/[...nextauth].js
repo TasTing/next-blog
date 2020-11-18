@@ -2,17 +2,41 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 const options = {
-    // Configure one or more authentication providers
     providers: [
-        Providers.GitHub({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET
+        Providers.Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
-        // ...add more providers here
     ],
+    database: process.env.NEXT_PUBLIC_DATABASE_URL,
+    session: {
+        jwt: true,
+    },
+    debug: true,
+    callbacks: {
+        session: async (session, user) => {
+            session.jwt = user.jwt;
+            session.id = user.id;
 
-    // A database is optional, but required to persist accounts in a database
-    database: process.env.DATABASE_URL,
-}
+            return Promise.resolve(session);
+        },
+        jwt: async (token, user, account) => {
+            const isSignIn = user ? true : false;
+
+            if (isSignIn) {
+                const response = await fetch(
+                    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/${account.provider}/callback?access_token=${account?.accessToken}`
+                );
+
+                const data = await response.json();
+
+                token.jwt = data.jwt;
+                token.id = data.user.id;
+            }
+
+            return Promise.resolve(token);
+        },
+    },
+};
 
 export default (req, res) => NextAuth(req, res, options)
