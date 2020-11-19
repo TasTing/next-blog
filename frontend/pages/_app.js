@@ -7,7 +7,7 @@ import {getStrapiMedia} from "../lib/media";
 import {fetchAPI} from "../lib/api";
 import {ThemeProvider} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {Provider} from 'next-auth/client'
+import {Provider as NextAuthProvider} from 'next-auth/client'
 import theme from "../lib/theme";
 
 // Store Strapi Global object in context
@@ -57,7 +57,7 @@ const MyApp = ({Component, pageProps}) => {
                         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                         crossOrigin="anonymous"/>
             </Head>
-            <Provider session={pageProps.session}>
+            <NextAuthProvider session={pageProps.session}>
                 <GlobalContext.Provider value={global}>
                     <ThemeProvider theme={theme}>
 
@@ -67,7 +67,7 @@ const MyApp = ({Component, pageProps}) => {
 
                     </ThemeProvider>
                 </GlobalContext.Provider>
-            </Provider>
+            </NextAuthProvider>
         </>
     );
 };

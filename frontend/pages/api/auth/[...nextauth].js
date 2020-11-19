@@ -13,7 +13,7 @@ const options = {
             clientSecret: process.env.GITHUB_SECRET
         }),
     ],
-    database: process.env.NEXT_PUBLIC_DATABASE_URL,
+    //database: process.env.NEXT_PUBLIC_DATABASE_URL,
     session: {
         jwt: true,
     },
