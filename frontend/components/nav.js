@@ -1,11 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import {getStrapiMedia} from "../lib/media";
-import {signIn, signOut, useSession} from 'next-auth/client'
+
 
 const Nav = ({categories, global}) => {
     const backgroundImage = getStrapiMedia(global.defaultSeo.shareImage)
-    const [ session, loading ] = useSession()
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark"
@@ -32,16 +31,6 @@ const Nav = ({categories, global}) => {
                             </li>
                         );
                     })}
-                    <li>
-                        {!session && <>
-                            Not signed in <br/>
-                            <button onClick={signIn}>Sign in</button>
-                        </>}
-                        {session && <>
-                            Signed in as {session.user.email} <br/>
-                            <button onClick={signOut}>Sign out</button>
-                        </>}
-                    </li>
                 </ul>
             </div>
         </nav>
