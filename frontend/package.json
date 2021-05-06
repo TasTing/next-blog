@@ -23,7 +23,8 @@
     "react-jss": "^10.4.0",
     "react-markdown": "^4.2.2",
     "react-moment": "^0.9.6",
-    "react-parallax": "^3.0.3"
+    "react-parallax": "^3.0.3",
+    "reactjs-media": "^1.5.1"
   },
   "license": "MIT",
   "devDependencies": {

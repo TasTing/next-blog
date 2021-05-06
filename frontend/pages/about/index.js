@@ -6,6 +6,7 @@ import { Container } from "@material-ui/core";
 import Intro from "../../components/intro";
 import GithubProfile from "../../components/github";
 import ContactForm from "../../components/contactform";
+import { YoutubePlayer } from "reactjs-media";
 
 const About = ({ categories, global, homepage }) => {
   const seo = {};
@@ -17,6 +18,12 @@ const About = ({ categories, global, homepage }) => {
         <Container>
           <Intro intro={homepage.intro}/>
           <GithubProfile/>
+          <YoutubePlayer
+              src="https://youtu.be/zNZyFCY1l9I"
+              allowFullScreen
+              height={500}
+              width={600}
+          />
           <ContactForm/>
         </Container>
       </div>
