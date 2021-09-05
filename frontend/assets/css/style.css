@@ -40,3 +40,27 @@ img:hover {
   transition: opacity 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
+.square {
+  float:left;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  color:black;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.board-row {
+  max-width: 500px;
+}
+
+.usage .output{
+  font-size: 12px;
+  word-wrap: normal;
+}
+
+.robotBody {
+  min-height: 1000px;
+}
