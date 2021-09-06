@@ -14,6 +14,7 @@ import {YoutubePlayer} from "reactjs-media";
 import ContactForm from "../../components/contactform";
 import {Container} from "@material-ui/core";
 
+// do nothing but to trigger the redeploy
 const Index = ({ categories, global, homepage }) => {
     const seo = {};
 
